@@ -1,7 +1,0 @@
-FormKey: 000812:DHLP_Redux.esp
-EditorID: WD_beltRustedTexture
-Diffuse: devious\devices\rusted\beltRustedIron_d.dds
-NormalOrGloss: devious\devices\beltIron_n.dds
-EnvironmentMaskOrSubsurfaceTint: devious\devices\beltIron_em.dds
-Environment: devious\cubemaps\Zad_shinydull_e.dds
-Flags: []

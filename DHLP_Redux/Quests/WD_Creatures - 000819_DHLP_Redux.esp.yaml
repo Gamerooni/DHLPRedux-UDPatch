@@ -34,9 +34,6 @@ VirtualMachineAdapter:
       Name: pl
       Object: 000014:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: rustedBeltMsg
-      Object: 000820:DHLP_Redux.esp
-    - MutagenObjectType: ScriptObjectProperty
       Name: sandboxPackage
       Object: 00081D:DHLP_Redux.esp
     - MutagenObjectType: ScriptObjectProperty

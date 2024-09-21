@@ -8,16 +8,16 @@ ModHeader:
   - Small
   Author: 'krzp & Taki17 '
   MasterReferences:
-  - Master: Skyrim.esm
-    FileSize: 0
   - Master: Dawnguard.esm
+    FileSize: 0
+  - Master: Devious Devices - Assets.esm
+    FileSize: 0
+  - Master: Devious Devices - Integration.esm
     FileSize: 0
   - Master: SexLab.esm
     FileSize: 0
   - Master: SexLabAroused.esm
     FileSize: 0
-  - Master: Devious Devices - Assets.esm
-    FileSize: 0
-  - Master: Devious Devices - Integration.esm
+  - Master: Skyrim.esm
     FileSize: 0
   INTV: 1
