@@ -249,6 +249,7 @@ jobs:
           esps=${{ env.ESP_NAMES }}
           mkdir "${{ github.workspace }}/to-pack"
           mkdir "${{ github.workspace }}/to-pack/000 Required - Core Files"
+          mkdir "${{ github.workspace }}/to-pack/100 Optional - Example Patch"
           mkdir "${{ github.workspace }}/to-pack/200 Optional - Script Sources"
           cp "${esps[0]}.esp" "${{ github.workspace }}/to-pack/000 Required - Core Files/${esps[0]}.esp"
           cp -a "Scripts" "${{ github.workspace }}/to-pack/000 Required - Core Files/Scripts"
