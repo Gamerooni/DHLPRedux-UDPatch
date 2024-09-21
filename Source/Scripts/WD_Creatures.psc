@@ -1,4 +1,4 @@
-﻿Scriptname WD_Creatures extends Quest
+Scriptname WD_Creatures extends Quest
 
 import StorageUtil
 import ActorUtil
@@ -24,8 +24,6 @@ string property creatureList = "dhlp-creatureList" auto hidden
 string property creatureQueue = "dhlp-creatureQueue" auto hidden
 
 WD_EscapeAlias Property EscapeAlias Auto
-bool wearingArmbinder
-bool wearingRustedBelt
 bool wearingBelt
 bool property raped auto hidden
 
@@ -52,12 +50,10 @@ bool function addCreature(Actor creature)
 	FormListAdd(none, creatureList, creature, false)
 	FormListAdd(pl, creatureQueue, creature, false)
 	int i = FormListCount(none, util.followerList)
-;	Actor f
+
 	while i > 0 
-;		f = FormListGet(none, util.followerList, i) as Actor
 		i -= 1
 		FormListAdd(FormListGet(none, util.followerList, i), creatureQueue, creature, false)
-;		util.log(creature.GetLeveledActorBase().GetName() + " queued for " + f.GetLeveledActorBase().GetName() + ".")
 	EndWhile
 	
 	creature.ModAv("SpeedMult", util.GetRapistSpeedModifier())
@@ -212,14 +208,7 @@ function StartCreaturePlayerRape(Actor[] actors)
 			util.ForceStripArmbinder(pl)
 		EndIf
 		
-	;	If config.stripArmbinder && pl.GetItemCount(libs.armbinderRendered) > 0
-	;		wearingArmbinder = true
-	;		libs.ManipulateDevice(pl, libs.armbinder, false, false)
-	;	EndIf
-		
 		DraugrBeltStrip()
-
-	;	util.StealDelivery()
 	endIf
 	
 	RegisterForModEvent("HookAnimationEnd_HelplessCreature", "CreatureRapeEnd")	
@@ -340,7 +329,6 @@ Actor[] function getCreatures(Actor target)
 	return creatures
 EndFunction
 
-;Event CreatureRapeEnd(String eventName, String argString, float argNum, Form Sender)
 Event CreatureRapeEnd(int thread, bool hasPlayer)
 	util.log("CreatureRapeEnd()")
 
@@ -368,23 +356,14 @@ function ContinueCreatureScene()
 		
 		raped = true
 		
-		If !pl.WornHasKeyWord(libs.zad_DeviousBelt) && ( wearingRustedBelt || wearingBelt || Utility.RandomInt() < 67 )
-			pl.RemoveItem(util.beltRusted, 99, true) ; Remove old belts if any, to force the belt script to use the latest version
-			pl.RemoveItem(util.rustyKey, 99, true)
-			; If a belt was already worn, equip the rusted belt. Otherwise, 67% chance to equip it.
+		If !pl.WornHasKeyWord(libs.zad_DeviousBelt) && ( wearingBelt || Utility.RandomInt() < 67 )
+			; rusted belt is borked. just puts in plugs instead lol
 			if !pl.WornHasKeyWord(libs.zad_DeviousPlugAnal)
 				util.ManipulateDevice(pl, util.plugWornAn, true)
 			endIf
 			if !pl.WornHasKeyWord(libs.zad_DeviousPlugVaginal)
 				util.ManipulateDevice(pl, util.plugWornVag, true)
 			endIf
-			util.ManipulateDevice(pl, util.beltRusted, true)
-			if !wearingRustedBelt
-				; Don't show the "surprise, belt!" message if it's already familiar
-				rustedBeltMsg.show()
-			endIf
-			libs.Moan(pl)
-			util.log("Equipped a rusted belt.")
 		endIf
 		
 		Armor binder = GetFormValue(pl, "dhlp-wornArmbinder") as Armor
@@ -403,8 +382,7 @@ function ContinueCreatureScene()
 			util.RegisterForModEvent("Helpless_FollowerRedress", "RedressFollowers")
 			SendModEvent("Helpless_FollowerRedress")
 		endIf
-		
-		wearingRustedBelt = false
+
 		wearingBelt = false
 		UnsetFormValue(pl, "dhlp-wornArmbinder")
 		
@@ -418,10 +396,6 @@ function ContinueCreatureScene()
 		libs.EnableEventProcessing()
 		stopped = Utility.GetCurrentRealTime()
 		stopping = false
-	;	Utility.Wait(Utility.RandomFloat(10.0, 45.0))
-	;	If lastCreatureAdded < stopped
-	;		StopCreatureScene()
-	;	EndIf
 	EndIf
 endFunction
 
@@ -458,7 +432,6 @@ function StopCreatureScene()
 			creature.BlockActivation(false)
 			RemovePackageOverride(creature, gatherPackage)
 			RemovePackageOverride(creature, sandboxPackage)
-		;	ClearPackageOverride(creature)
 		endIf
 	endWhile
 	num = FormListCount(none, util.followerList)
@@ -468,8 +441,6 @@ function StopCreatureScene()
 		FormListClear(a, creatureQueue)
 		a.RemoveFromFaction(HelplessFaction)
 	endwhile
-;	RemoveAllPackageOverride(gatherPackage)
-;	RemoveAllPackageOverride(sandboxPackage)
 	FormListClear(none, creatureList)
 	FormListClear(pl, creatureQueue)
 	pl.RemoveFromFaction(HelplessFaction)
@@ -481,14 +452,7 @@ function DraugrBeltStrip()
 	; No chastity friendly animations with creatures really, so strip regardless of user setting 
 	bool skipMsg = false
 	
-	if pl.GetItemCount(util.beltRustedRendered) > 0
-	;	util.ManipulateDevice(pl, util.beltRusted, false, false)
-		libs.LockDevice( pl, util.beltRusted )
-		wearingRustedBelt = true
-		skipMsg = true ; Draugr manage to open their own belt without any issues
-	endIf
-	
-	if pl.WornHasKeyWord(libs.zad_DeviousBelt) ; && Utility.RandomInt() < 60
+	if pl.WornHasKeyWord(libs.zad_DeviousBelt)
 		if pl.GetItemCount(libs.beltIronRendered) > 0
 			libs.ManipulateDevice(pl, libs.beltIron, false, false)
 			pl.RemoveItem(libs.beltIron, 1, true)

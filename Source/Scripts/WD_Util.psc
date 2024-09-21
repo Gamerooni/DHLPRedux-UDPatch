@@ -1,4 +1,4 @@
-﻿Scriptname WD_util extends Quest Conditional
+Scriptname WD_util extends Quest Conditional
 
 import StorageUtil
 import ActorUtil
@@ -96,7 +96,6 @@ bool allowFollowers = false
 bool stopping = false
 float stopped = 0.0 	; In use during the grace period after the scene, indicates when the grace period started
 
-bool[] noStrip
 bool[] doStrip
 
 ; -------------------------------------
@@ -197,7 +196,6 @@ EndFunction
 
 function UpdateMaintenance()
 	Maintenance()
-	noStrip = new bool[33]
 	doStrip = new bool[33]
 	doStrip[0] = true ; head
 	doStrip[2] = true ; body
@@ -671,7 +669,7 @@ Function StartPlayerRape(Actor[] actors)
 	
 		sslBaseAnimation[] anims = GetAnimations(pl, actors.Length, agg)
 		RegisterForModEvent("HookAnimationEnd_Helpless", "RapeEnd")	
-		SexLab.StartSex(actors, anims, pl, none, none, "Helpless") 
+		SexLab.StartSex(actors, anims, pl, none, false, "Helpless") 
 		
 	endif
 		
@@ -875,13 +873,11 @@ Key Function GetCustomWornBeltKey()
 		log("GetKey skipped, done already")
 		return customKey
 	EndIf
-	If pl.GetItemCount(libs.beltIronRendered) > 0 || pl.GetItemCount(libs.beltPaddedRendered) > 0 || pl.GetItemCount(libs.beltPaddedOpenRendered) > 0 || pl.GetItemCount(libs.harnessBodyRendered) > 0 ;|| compat.expansion && pl.GetItemCount(compat.xlibs.eboniteHarnessBodyRendered) > 0
+	If pl.GetItemCount(libs.beltIronRendered) > 0 || pl.GetItemCount(libs.beltPaddedRendered) > 0 || pl.GetItemCount(libs.beltPaddedOpenRendered) > 0 || pl.GetItemCount(libs.harnessBodyRendered) > 0
 		return none
-;	ElseIf pl.GetItemCount(beltRustedRendered) > 0
-;		return none
 	Else
 		Key k = libs.GetDeviceKey(libs.GetWornDeviceFuzzyMatch(pl, libs.zad_DeviousBelt)) ; bit slow...
-		If k != libs.chastityKey ;&& k != rustykey
+		If k != libs.chastityKey
 			log("Custom belt with a custom key found.")
 			return k
 		Else
@@ -897,27 +893,6 @@ Function StripBelt()
 	bool hasBelt = pl.WornHasKeyword(libs.zad_DeviousBelt)
 	If config.stripBelt && !wornBelt && hasBelt
 		If !config.requireKeys || rapistHasKey
-		;	if pl.GetItemCount(libs.beltIronRendered) > 0
-		;		wornBelt = libs.beltIron
-		;		libs.ManipulateDevice(pl, libs.beltIron, false, false)
-		;	elseif pl.GetItemCount(libs.beltPaddedRendered) > 0
-		;		wornBelt = libs.beltPadded
-		;		libs.ManipulateDevice(pl, libs.beltPadded, false, false)
-		;	elseif pl.GetItemCount(libs.beltPaddedOpenRendered) > 0
-		;		wornBelt = libs.beltPaddedOpen
-		;		libs.ManipulateDevice(pl, libs.beltPaddedOpen, false, false)
-		;	elseif pl.GetItemCount(libs.harnessBodyRendered) > 0
-		;		wornBelt = libs.harnessBody
-		;		libs.ManipulateDevice(pl, libs.harnessBody, false, false)
-		;	elseif customKey == none
-		;		; unrecognized belt, try generic manipulation
-		;		log("Custom belt, generic key")
-		;		wornBelt = libs.GetWornDeviceFuzzyMatch(pl, libs.zad_DeviousBelt)
-		;		log("wornBelt: " + wornBelt.GetName())
-		;		If !libs.ManipulateGenericDevice(pl, wornBelt, false, false, true)
-		;			wornBelt = none					
-		;		EndIf
-		;	endif
 			If pl.WornHasKeyword( libs.zad_DeviousBelt )
 				wornBelt = libs.GetWornDeviceFuzzyMatch( pl, libs.zad_DeviousBelt )
 				If !wornBelt.HasKeyword( libs.zad_BlockGeneric ) && !libs.UnlockDevice( pl, wornBelt, libs.GetRenderedDevice( wornBelt ), libs.zad_DeviousBelt, True, True )
@@ -926,20 +901,11 @@ Function StripBelt()
 			EndIf
 		EndIf
 		
-		; Custom belts here
-;		If !config.requireKeys || rapistHasRustykey
-;			if pl.GetItemCount(beltRustedRendered) > 0
-;				ManipulateDevice(pl, beltRusted, false, false)
-;				wornBelt = beltRusted
-;			endIf
-;		EndIf
-		
 		If !config.requireKeys || rapistHasCustomKey
 			if pl.WornHasKeyword(libs.zad_DeviousBelt)
 				log("Custom belt, custom key.")
 				wornBelt = libs.GetWornDeviceFuzzyMatch(pl, libs.zad_DeviousBelt)
 				log("wornBelt: " + wornBelt.GetName())
-			;	If !libs.ManipulateGenericDevice(pl, wornBelt, false, false, true)
 				If !libs.UnlockDevice( pl, wornBelt, libs.GetRenderedDevice( wornBelt ), libs.zad_DeviousBelt, True )
 					wornBelt = None					
 				EndIf
@@ -964,7 +930,6 @@ Function StripBelt()
 	EndIf
 EndFunction
 
-;Event Orgasm(String eventName, String argString, float argNum, Form Sender)
 Event Orgasm(int thread, bool hasPlayer)
 	UnregisterForModEvent("HookOrgasmStart_Helpless")
 	Utility.Wait(0.8)
@@ -1017,18 +982,14 @@ Function ContinueScene()
 			int i = wornPlugs.length
 			while i > 0
 				i -= 1 ; So much hassle for one missing line...
-			;	libs.ManipulateGenericDevice(pl, wornplugs[i], true, false, true)
 				libs.LockDevice( pl, wornplugs[i] )
-			;	ManipulateDevice(pl, wornPlugs[i], true)
 			endWhile
 		EndIf
 		
 		If wornBelt && !pl.WornHasKeyword(libs.zad_DeviousBelt)
-		;	ManipulateDevice(pl, wornBelt, true, false)
 			libs.LockDevice( pl, wornbelt )
 		EndIf
 		
-	;	bool wearingArmbinder = GetIntValue(pl, "dhlp-wornArmbinder", 0) == 1
 		Armor binder = GetFormValue(pl, "dhlp-wornArmbinder") as Armor
 		int bchance = config.enemyItemChance
 		
@@ -1049,7 +1010,6 @@ Function ContinueScene()
 				binder = devman.GetPreferredDevice(libs.zad_DeviousArmbinder)
 				Utility.Wait(3) ; wait a bit to allow the dialogue to play before the scene end one
 			EndIf
-		;	libs.ManipulateGenericDevice(pl, binder, true, false, true)
 			libs.LockDevice( pl, binder )
 			wearingBinder = true
 			dialogueID.SetValueInt(0)
@@ -1067,7 +1027,6 @@ Function ContinueScene()
 			; Prevent laggy equip events on followers from slowing down the freeing process
 			RegisterForModEvent("Helpless_FollowerRedress", "RedressFollowers")
 			SendModEvent("Helpless_FollowerRedress")
-			;RedressFollowers()
 		endIf
 		
 		dialogueID.SetValueInt(7)
@@ -1075,11 +1034,9 @@ Function ContinueScene()
 		
 		CeaseFire()
 		rapistHasKey = false
-;		rapistHasRustykey = false
 		rapistHasCustomKey = false
 		keyCheckDone = false
 		customKey = none
-		;hasMale = false
 		hasAllowedGender = false
 		Utility.Wait(1.5) ; Looks like it takes a while for the armbinder to be equipped, so lets wait a while
 		if(!pl.WornHasKeyword(libs.zad_DeviousHeavyBondage))
@@ -1090,11 +1047,6 @@ Function ContinueScene()
 		wornItems = new Form[1]
 		SetFollowerAnimation()
 		
-	;if GetIntValue(pl, "dhlp-wornArmbinderStruggle") == 1
-	;		armbinderQuest.DisableStruggling()
-	;	EndIf
-	;	UnsetIntValue(pl, "dhlp-wornArmbinderStruggle")
-		
 		Debug.SendAnimationEvent(pl, "IdleForceDefaultState")
 		
 		
@@ -1104,12 +1056,6 @@ Function ContinueScene()
 		libs.EnableEventProcessing()
 		stopped = Utility.GetCurrentRealTime()
 		stopping = false
-	;	Utility.Wait(Utility.RandomFloat(15.0, 45.0))
-	;	if lastRapistAdded < stopped ;&& chaseTimeout == 0
-	;		; Don't stop the scene if more rapists have been added to start another one
-	;		stopped = 0.0
-	;		StopSceneAndClear()
-	;	endIf
 	EndIf
 EndFunction
 
@@ -1178,7 +1124,6 @@ Function StopSceneAndClear()
 	endWhile
 	libs.EnableEventProcessing() ; Re-enable device events
 	wornBelt = none
-;	wearingArmbinder = false
 	UnsetIntValue(pl, "dhlp-wornArmbinder")
 	FormListClear(pl, rapeQueue)
 	WD_SceneRunning.SetValueInt(0)
@@ -1226,7 +1171,7 @@ event OnVibrate(string eventName, string argString, float argNum, form sender)
 			if pl.IsSneaking()
 				pl.StartSneaking() ; Should stop sneaking if was already sneaking
 			endIf
-			pl.CreateDetectionEvent(pl, (25 * (argNum - 1) as float + 0.5) as int)
+			pl.CreateDetectionEvent(pl, (25.0 * (argNum - 1) + 0.5) as int)
 		EndIf
 
 		int[] drops = new int[2] ; no drops = none array = log spam >.>
@@ -1491,31 +1436,6 @@ function StealGoldAndGear()
 	FormListClear(none, stealList)
 endFunction
 
-;function StealDelivery()
-;	if !config.capturedDreams
-;		return
-;	endIf
-;	log("StealDelivery()")
-;	
-;	Actor closest = getClosestRapist(pl)
-;	Actor thief = none
-;	
-;	FormList items = Game.GetFormFromFile(0x00137EDC , "Captured Dreams.esp") as FormList
-;	int i = items.GetSize()
-;	while i > 0
-;		i -= 1
-;	;	log("Stealing " + items.GetAt(i).GetName())
-;		if Utility.RandomInt(0, 99) < 60
-;		;	If Utility.RandomInt(0, 99) < 50
-;		;		thief = none
-;		;	Else
-;		;		thief = closest
-;		;	EndIf		
-;			pl.RemoveItem(items.GetAt(i), 10, true, closest)
-;		endif
-;	endWhile
-;endFunction
-
 function notify(string msg)
 	if config.messages && msg != ""
 		Debug.Notification(msg)
@@ -1575,46 +1495,6 @@ Function ManipulateDevice(actor akActor, armor device, bool equipOrUnequip)
 	if akActor == none || device == none
 		return
 	endIf
-;	log("ManipulateDevice(" + akActor.GetLeveledActorBase().GetName() + ", " + device.GetName() + ", " + equipOrUnequip + ")")
-;	Armor deviceRendered
-;	Keyword deviceKeyword
-;	if device == beltRusted
-;		deviceRendered = beltRustedRendered
-;		deviceKeyword = libs.zad_DeviousBelt
-;	elseIf device == plugWornVag
-;		deviceRendered = plugWornVagRendered
-;		deviceKeyword = libs.zad_DeviousPlugVaginal
-;	elseIf device == plugWornAn
-;		deviceRendered = plugWornAnRendered
-;		deviceKeyword = libs.zad_DeviousPlugAnal
-;	elseif config.capturedDreams && device == compat.plugsMage
-;		deviceRendered = compat.plugsMageRendered
-;		deviceKeyword = libs.zad_DeviousPlugVaginal
-;	elseif config.capturedDreams && device == compat.plugsAssassin
-;		deviceRendered = compat.plugsAssassinRendered
-;		deviceKeyword = libs.zad_DeviousPlugVaginal
-;	elseif config.capturedDreams && device == compat.plugsThief
-;		deviceRendered = compat.plugsThiefRendered
-;		deviceKeyword = libs.zad_DeviousPlugVaginal
-;	elseif config.capturedDreams && device == compat.plugsFighter
-;		deviceRendered = compat.plugsFighterRendered
-;		deviceKeyword = libs.zad_DeviousPlugVaginal
-;	elseif config.capturedDreams && device == compat.plugsTormentor
-;		deviceRendered = compat.plugsTormentorRendered
-;		deviceKeyword = libs.zad_DeviousPlug
-;	Else
-;		If !device.HasKeyword(libs.zad_BlockGeneric)
-;			If libs.ManipulateGenericDevice(akActor, device, equipOrUnequip, skipEvents, skipMutex)
-;				return
-;			EndIf
-;		EndIf
-;	;	If compat.expansion
-;	;		compat.xlibs.ManipulateDevice(akActor, device, equipOrUnequip, skipEvents)
-;	;	Else
-;			libs.ManipulateDevice(akActor, device, equipOrUnequip, skipEvents)
-;	;	EndIf
-;		return
-;	EndIf
 	if equipOrUnequip
 		libs.LockDevice( akActor, device, False )
 	else
@@ -1627,7 +1507,6 @@ Armor[] Function StripWornPlugs(actor akActor)
 	
 	If akActor.WornHasKeyWord(libs.zad_DeviousPlugVaginal)
 		Armor vagPlugInv = libs.GetWornDeviceFuzzyMatch(akActor, libs.zad_DeviousPlugVaginal)
-	;	If libs.ManipulateGenericDevice(akActor, vagPlugInv, false, false, true)
 		If libs.UnlockDevice( akActor, vagPlugInv, libs.GetRenderedDevice( vagPlugInv ), libs.zad_DeviousPlugVaginal, True, True )
 			ret[0] = vagPlugInv
 		EndIf
@@ -1635,18 +1514,10 @@ Armor[] Function StripWornPlugs(actor akActor)
 	
 	If akActor.WornHasKeyWord(libs.zad_DeviousPlugVaginal)
 		Armor anPlugInv = libs.GetWornDeviceFuzzyMatch(akActor, libs.zad_DeviousPlugAnal)
-	;	If libs.ManipulateGenericDevice(akActor, anPlugInv, false, false, true)
 		If libs.UnlockDevice( akActor, anPlugInv, libs.GetRenderedDevice( anPlugInv ), libs.zad_DeviousPlugAnal, True, True )
 			ret[1] = anPlugInv
 		EndIf
 	EndIf
-	
-;	If akActor.WornHasKeyWord(libs.zad_DeviousPlug)
-;		Armor plugsInv = libs.GetWornDeviceFuzzyMatch(akActor, libs.zad_DeviousPlug)
-;		If libs.ManipulateGenericDevice(akActor, plugsInv, false, false, true)
-;			ret[2] = plugsInv
-;		EndIf
-;	EndIf
 		
 	return ret
 EndFunction
@@ -1706,10 +1577,9 @@ Event StartFollowerRape(String eventName, String argString, float argNum, Form S
 				follower.RemoveItem(gold, (follower.GetItemCount(gold) as float * Utility.RandomFloat(0.1, 0.5)) as int, true )
 				follower.RemoveItem(gold, follower.GetItemCount(gold), true, thief)
 			endIf
-			if config.stripArmbinder; && follower.GetItemCount(libs.armbinderRendered) > 0 
+			if config.stripArmbinder
 				ForceStripArmbinder(follower)
 			endIf
-		;	StoreActorItems(follower, SexLab.StripSlots(follower, doStrip))
 			if GetState() == "SceneRunning" && allowFollowers && !creatures
 				StartFollowerAnimation(follower)
 			ElseIf creatureQuest.GetState() == "SceneRunning" && creatures
@@ -1731,39 +1601,8 @@ Function StartFollowerAnimation(Actor follower, bool creatures = false)
 		log("Stopping scene for follower " + follower.GetLeveledActorBase().GetName() + ", no more rapists.")
 		return
 	endIf
-;	sslBaseAnimation[] anims 
-
-;	If !creatures
-;		anims = GetAnimations(follower, actors.length, config.onlyAggressive)
-;	EndIf
-	
-;	sslThreadModel thread = SexLab.NewThread()
-;	thread.AddActor(follower, true)
-;	thread.SetStrip(follower, doStrip)
-;	If !creatures
-;		thread.AddActor(actors[1])
-;		thread.SetStrip(actors[1], doStrip)
-;		if actors.length == 3
-;			thread.AddActor(actors[2])
-;			thread.SetStrip(actors[2], doStrip)
-;		endIf
-;		thread.SetAnimations(anims)
-;	Else
-;		int i = 1
-;		while i < actors.length
-;			thread.AddActor(actors[i])
-;			i += 1
-;		endWhile
-;	EndIf
-;	thread.SetHook("HelplessFollower")
-;	thread.DisableLeadIn()
-;	thread.DisableBedUse(true)
-	
-;	sslThreadController controller = thread.StartThread()
-	
 
 	if	libs.StartValidDDAnimation( SexActors = actors, includetag = "", suppresstag = "foreplay", victim = follower, hook = "HelplessFollower" )
-;		IntListAdd(none, followerThreads, controller.tid)
 		SetFormValue(self, "dhlp-followerThread-", follower)
 		log("Follower " + follower.GetLeveledActorBase().GetName() + " slotted to thread.")
 	else 
@@ -1817,26 +1656,17 @@ Function DoRedressFollowers()
 	while i > 0
 		i -= 1
 		Actor follower = FormListGet(none, followerList, i) as Actor
-;		SexLab.UnstripActor(follower, GetStoredActorItems(follower))
 		Armor belt = GetFormValue(follower, "dhlp-wornBelt") as Armor
-		;Armor beltRendered = GetFormValue(follower, "dhlp-wornBeltRendered") as Armor
 		if belt
 			log("Re-equipped " + follower.GetLeveledActorBase().GetName() + " with a chastity belt.")
 			UnsetFormValue(follower, "dhlp-wornBelt")
 			UnsetFormValue(follower, "dhlp-wornBeltRendered")
-		;	libs.EquipDevice(follower, belt, beltRendered, libs.zad_DeviousBelt, skipEvents=true, skipMutex=true)
 			libs.LockDevice( follower, belt )
-		;	ManipulateDevice(follower, belt, true)
 		endIf
 		Armor binder = GetFormValue(follower, "dhlp-wornArmbinder") as Armor
 		If binder
-	;	if GetIntValue(follower, "dhlp-wornArmbinder", 0) == 1
 			log("Re-equipped " + follower.GetLeveledActorBase().GetName() + " with an armbinder.")
-		;	libs.ManipulateGenericDevice(follower, binder, true, false, true)
 			libs.LockDevice( follower, binder )
-		;	libs.EquipDevice(follower, libs.armbinder, libs.armbinderRendered, libs.zad_DeviousArmbinder, skipEvents=true, skipMutex=true)
-		;	libs.ManipulateDevice(follower, libs.armbinder, true)
-		;	UnsetIntValue(follower,"dhlp-wornArmbinder")
 			UnsetFormValue(follower, "dhlp-wornArmbinder")
 		endIf
 		devman.EquipRandomDevices(follower)
@@ -1845,7 +1675,6 @@ Function DoRedressFollowers()
 EndFunction
 
 Function FindFollowers()
-;	log("FindFollowers()")
 	Cell c = pl.GetParentCell()
 	int n = c.GetNumRefs(43)
 	Actor a
@@ -1857,35 +1686,27 @@ Function FindFollowers()
 			FormListAdd(none, followerList, a, false)
 		endIf
 	endWhile
-;	log("Found " + FormListCount(none, followerList) + " followers.")
 EndFunction
 
 Function CleanFollowerList()
-;	log("CleanFollowerList()")
 	int i = FormListCount(none, followerList)
-;	int num = 0
 	while i > 0
 		i -= 1
 		Actor a = FormListGet(none, followerList, i) as Actor
 		if a == none || !a.Is3DLoaded() || a.IsDead() || a.IsDisabled() || a.GetWorldSpace() != pl.GetWorldSpace() || a.GetDistance(pl) > 3500
 			FormListRemoveAt(none, followerList, i)
-;			num += 1
 		endIf
 	endWhile
-;	log("Removed " + num + " follower(s).")
 EndFunction
 
 Function EquipFollowers(bool forceArmbinder = false)
 	int i = FormListCount(none, followerList)
-;	log("EquipFollowers(), count: " + i)
 	if i > 0
 		while i > 0 
 			i -= 1
 			Actor ref = FormListGet(none, followerList, i) as Actor
 			if pl.WornHasKeyWord(libs.zad_DeviousHeavyBondage) || forceArmbinder
 				if ref && !ref.WornHasKeyword(libs.zad_DeviousHeavyBondage)
-				;	libs.ManipulateDevice(ref, libs.armbinder, true, false)
-				;	libs.ManipulateGenericDevice(ref, libs.GetGenericDeviceByKeyword(libs.zad_DeviousArmbinder), true, false, true)
 					libs.LockDevice( ref, libs.GetGenericDeviceByKeyword( libs.zad_DeviousArmbinder ) )
 					log("Equipped " + ref.GetLeveledActorBase().GetName() + " with armbinder.")
 				endIf
@@ -1895,7 +1716,6 @@ Function EquipFollowers(bool forceArmbinder = false)
 EndFunction
 
 Function SetFollowerAnimation(String anim = "IdleForceDefaultState")
-;	log("SetFollowerAnimation("+anim+")")
 	int i = FormListCount(none, followerList)
 	while i > 0
 		i -= 1
@@ -1945,40 +1765,11 @@ EndFunction
 
 Function StripFollowerBelt(Actor follower, bool force = false)
 	Armor worn = none 
-	;Armor rendered = none
-	If follower.WornHasKeyword(libs.zad_DeviousBelt) && config.stripBelt && ( !config.requireKeys || rapistHasKey || force )
-	;	if follower.GetItemCount(libs.beltIronRendered) > 0
-	;		worn = libs.beltIron
-	;		rendered = libs.beltIronRendered
-	;	;	libs.ManipulateDevice(follower, libs.beltIron, false, true)
-	;	elseif follower.GetItemCount(libs.beltPaddedRendered) > 0
-	;		worn = libs.beltPadded
-	;		rendered = libs.beltPaddedRendered
-	;	;	libs.ManipulateDevice(follower, libs.beltPadded, false, true)
-	;	elseif follower.GetItemCount(libs.beltPaddedOpenRendered) > 0
-	;		worn = libs.beltPaddedOpen
-	;		rendered = libs.beltPaddedOpenRendered
-	;	;	libs.ManipulateDevice(follower, libs.beltPaddedOpen, false, true)
-	;	elseif follower.GetItemCount(libs.harnessBodyRendered) > 0
-	;		worn = libs.harnessBody
-	;		rendered = libs.harnessBodyRendered
-	;	else
-	;		worn = libs.GetWornDeviceFuzzyMatch(follower, libs.zad_DeviousBelt)
-	;		If worn && !worn.HasKeyword(libs.zad_BlockGeneric)
-	;			rendered = libs.GetRenderedDevice(worn)
-	;		Else
-	;			worn = none
-	;		EndIf
 
-		;	libs.ManipulateDevice(follower, libs.harnessBody, false, true)
-	;	elseif compat.expansion && follower.GetItemCount(compat.xlibs.eboniteHarnessBodyRendered) > 0
-	;		worn = compat.xlibs.eboniteHarnessBody
-	;		rendered = compat.xlibs.eboniteHarnessBodyRendered
-	;	endif
+	If follower.WornHasKeyword(libs.zad_DeviousBelt) && config.stripBelt && ( !config.requireKeys || rapistHasKey || force )
 		worn = libs.GetWornDeviceFuzzyMatch( follower, libs.zad_deviousBelt )
 	EndIf
 	If worn && !worn.HasKeyword( libs.zad_BlockGeneric )
-	;	libs.RemoveDevice(follower, worn, rendered, libs.zad_deviousBelt, skipEvents = true, skipMutex = true)
 		libs.UnlockDevice( follower, worn, libs.GetRenderedDevice( worn ), libs.zad_deviousBelt, True, True )
 		SetFormValue( follower, "dhlp-wornBelt", worn )
 		SetFormValue( follower, "dhlp-wornBeltRendered", libs.GetRenderedDevice( worn ) )

@@ -1,4 +1,4 @@
-﻿Scriptname WD_Config extends SKI_ConfigBase
+Scriptname WD_Config extends SKI_ConfigBase
 
 import StorageUtil
 
@@ -33,10 +33,6 @@ int stripArmbinderOID
 bool Property CloakEnabled = true Auto hidden
 bool property CloakDefault = true autoreadonly hidden
 int cloakOID
-
-;bool Property creaturesEnabled auto hidden
-;bool property creaturesDefault = false autoreadonly hidden
-;int creatureOID
 
 bool Property logging = true Auto hidden
 bool property loggingDefault = true autoreadonly hidden
@@ -73,11 +69,6 @@ bool property stealGear = true auto hidden
 bool property stealGearDefault = true autoreadonly hidden
 int stealGearOID
 
-
-;bool property capturedDreams auto hidden
-;bool property capturedDreamsDefault = false autoreadonly hidden
-;int capturedDreamsOID
-
 bool property onlyAggressive auto hidden
 bool property onlyAggressiveDefault = true autoreadonly hidden
 int onlyAggressiveOID
@@ -101,10 +92,6 @@ int followersOID
 bool property overrideStrip auto hidden
 bool property overrideStripDefault = false autoreadonly hidden
 int overrideStripOID
-
-;bool property priceBias auto hidden
-;bool property priceBiasDefault = true autoreadonly hidden
-;int priceBiasOID
 
 bool armbinder
 bool property armbinderDefault = true autoreadonly hidden
@@ -194,18 +181,15 @@ Function PyUtils()
         if PyramidUtils.GetVersion() >= 0.002002
             PyU = true
             util.log("PyUtils v" + PyramidUtils.GetVersion() + " found.")
-			;util.notify("PyU here! version:" + SKSE.GetPluginVersion("pyramid-utils") )
 			return
         else
             PyU = false
             util.log("PyUtils found, but version isn't correct - please update.")
-			;util.notify("PyU incorrect! version:" + SKSE.GetPluginVersion("pyramid-utils") )
 			return
         EndIf
     else 
         PyU = false
         util.log("PyUtils not found, using legacy functions")
-		;util.notify("PyU not here! SKSE says" + SKSE.GetPluginVersion("pyramid-utils") )
     EndIf
 
 EndFunction
@@ -303,18 +287,15 @@ Function SetDefaults()
 	stealKeys = stealKeysDefault
 	requireKeys = requireKeysDefault
 	stealGear = stealGearDefault
-	;capturedDreams = capturedDreamsDefault
 	onlyAggressive = onlyAggressiveDefault
 	randomEquip = randomEquipDefault
 	restrictiveChance = restrictiveChanceDefault
-	;creaturesEnabled = creaturesDefault
 	whileSheathed = whileSheathedDefault
 	followers = followersDefault
 	stripArmbinder = stripArmbinderDefault
 	allowedGender = allowedGenderDefault
 	WD_SheathedTrigger.SetValueInt(0)
 	overrideStrip = overrideStripDefault
-	;priceBias = priceBiasDefault
 	enemyItemChance = enemyItemChanceDefault
 	noFast = noFastDefault
 	harness = harnessDefault
@@ -352,16 +333,6 @@ Function InitPages()
 	
 	int mats = 4
 	int cols = 5
-	
-;	bool exp = Game.GetModByName("Devious Devices - Expansion.esm") != 255
-;	bool cd = Game.GetModByName("Captured Dreams.esp") != 255
-;	If exp
-;		mats += 1
-;		cols += 2
-;	EndIf
-;	If cd
-;		cols += 2
-;	EndIf
 	
 	materials = sslUtility.StringArray(mats)
 	displayMaterials = sslUtility.StringArray(mats)
@@ -410,10 +381,8 @@ Event OnVersionUpdate(int newVersion)
 		InitPages()
 		util.clean()
 		util.stop()
-		;creatureQuest.stop()
 		PopulateKeywordList()
 		util.start()
-		;creatureQuest.start()
 		plr.RemoveSpell(cloakSpell)
 		PlayerEventAlias.ForceRefTo(plr)
 		If cloakEnabled
@@ -423,21 +392,10 @@ Event OnVersionUpdate(int newVersion)
 		util.UpdateMaintenance()
 		PyUtils()
 		devman.InitLists()
-;		if SexLab.AllowedCreature(DraugrRace)
-;			creaturesEnabled = true
-;			WD_CreatureEnabler.SetValueInt(1)
-;		else
-;			creaturesEnabled = false
-;			WD_CreatureEnabler.SetValueInt(0)
-;		endIf
 		if onlyUnarmed
 			util.checkForWeapons()
 		endif
 		util.FindFollowers()
-;		plr.RemovePerk(pricePerk)
-;		If priceBias
-;			plr.AddPerk(pricePerk)
-;		EndIf
 		SendModEvent("zadRegisterEvents")
 		Debug.Notification("Deviously Helpless Redux updated")
 	EndIf
@@ -450,13 +408,6 @@ Event OnPageReset(String page)
 		cloakOID = AddToggleOption("Attacks enabled", cloakEnabled)
 		onlyUnarmedOID = AddToggleOption("...only with no weapons equipped", onlyUnarmed)
 		whileSheathedOID = AddToggleOption("...only with no weapons out", whileSheathed)
-;		if SexLab.AllowedCreature(DraugrRace)
-;			creatureOID = AddToggleOption("Enable Draugr attacks", creaturesEnabled)
-;		else
-;			creaturesEnabled = false
-;			WD_CreatureEnabler.SetValueInt(0)
-;			creatureOID = AddToggleOption("Enable Draugr attacks", creaturesEnabled, OPTION_FLAG_DISABLED)
-;		endIf
 		AddHeaderOption("Scene options")
 		allowedGenderOID = AddMenuOption("Allowed attacker sex", genders[allowedGender])
 		onlyAggressiveOID = AddToggleOption("Only aggressive animations", onlyAggressive)
@@ -472,7 +423,6 @@ Event OnPageReset(String page)
 		AddHeaderOption("Other")
 		dropWeaponsOID = AddToggleOption("Device events drop weapons", dropWeapons)
 		messagesOID = AddToggleOption("Enable status messages", messages)
-;		priceBiasOID = AddToggleOption("Price bias", priceBias)
 		If ( noFast == 1 && pl.WornHasKeyword(libs.zad_Lockable) ) || ( noFast == 2 && ( pl.WornHasKeyword(libs.zad_DeviousArmbinder) || pl.WornHasKeyword(libs.zad_DeviousBlindfold) ) )
 			noFastOID = AddMenuOption("Restrict fast travel", noFastOpt[noFast], OPTION_FLAG_DISABLED)
 		Else
@@ -626,7 +576,6 @@ Event OnOptionSliderAccept(int opt, float val)
 EndEvent
 
 Event OnOptionSelect(int opt)
-;	util.log("OnOptionSelect()")
 	If opt == cloakOID
 		CloakEnabled = !CloakEnabled
 		SetToggleOptionValue(cloakOID, CloakEnabled)
@@ -655,7 +604,6 @@ Event OnOptionSelect(int opt)
 			panic = true
 		Else
 			SetTextOptionValue(panicOID, "Done")
-			;creatureQuest.StopCreatureScene()
 			util.StopAllFollowerThreads()
 			util.SetFollowerAnimation()
 			util.StopSceneAndClear()
@@ -746,15 +694,6 @@ Event OnOptionSelect(int opt)
 		util.log("Only aggressive animations: " + onlyAggressive)
 	ElseIf opt == debugOID
 		SetTextOptionValue(debugOID, "done")
-;		util.log("Debug random equip")
-;		Utility.Wait(0.1)
-;		devman.SplitItems(util.pl)
-;		devman.StoreInventory(util.pl)
-;		devman.EquipRandomDevices(util.pl, restrictiveChance)
-;		devman.ClearStoredInventory(util.pl)
-;		
-;		util.FindFollowers()
-;		util.EquipFollowers()
 		StorageUtil.FormListClear(none, util.followerList)
 	ElseIf opt == debug02OID
 		util.FindFollowers()
@@ -777,15 +716,6 @@ Event OnOptionSelect(int opt)
 			SetOptionFlags(allowBlindOID, OPTION_FLAG_DISABLED)
 			SetOptionFlags(allowBootsOID, OPTION_FLAG_DISABLED)
 		endIf
-;	ElseIf opt == creatureOID
-;		creaturesEnabled = !creaturesEnabled
-;		SetToggleOptionValue(creatureOID, creaturesEnabled)
-;		if creaturesEnabled
-;			WD_CreatureEnabler.SetValueInt(1)
-;		else
-;			WD_CreatureEnabler.SetValueInt(0)
-;		EndIf
-;		util.log("Creatures set to: " + creaturesEnabled)
 	ElseIf opt == followersOID
 		followers = !followers
 		SetToggleOptionValue(followersOID, followers)
@@ -798,14 +728,6 @@ Event OnOptionSelect(int opt)
 		overrideStrip = !overrideStrip
 		SetToggleOptionValue(overrideStripOID, overrideStrip)
 		util.log("Strip override set to: " + overrideStrip)
-;	ElseIf opt == priceBiasOID
-;		priceBias = !priceBias
-;		SetToggleOptionValue(priceBiasOID, priceBias)
-;		pl.RemovePerk(pricePerk)
-;		If priceBias
-;			pl.AddPerk(pricePerk)
-;		EndIf
-;		util.log("Price bias set to: " + priceBias)
 	ElseIf opt == suspendOID
 		util.WD_SuspendScenes.SetValueInt(0)
 		SetTextOptionValue(suspendOID, "No")
@@ -841,16 +763,12 @@ Event OnOptionHighlight(int opt)
 		SetInfoText("Attackers strip the belt only if they have the proper key on them.")
 	ElseIf opt == stealGearOID
 		SetInfoText("Most of your gold & non-quest items will be stolen during scenes. ")
-	;ElseIf opt == capturedDreamsOID
-	;	SetInfoText("Enables integration with Captured Dreams.\nAttackers might steal any deliveries from the Captured Dreams shop. ")
 	ElseIf opt == onlyAggressiveOID
 		SetInfoText("With this enabled, only aggressive SexLab animations will play during scenes.\nDisabling allows for more animation variety, but can also lead to cuddling with the attackers.")
 	ElseIf opt == randomEquipOID
 		SetInfoText("Before letting you go, enemies will use random devices from your own inventory on you.\nRegardless of this setting they might add an armbinder.\nThis option can also add slightly longer delays on scene start and end.")
 	ElseIf opt == restrictiveChanceOID
 		SetInfoText("When equipping random items on you at scene end, gags, armbinders and blindfolds have this chance to be equipped. Rest of the items will always get equipped.\nDefault is 40%.")
-	;ElseIf opt == creatureOID
-	;	SetInfoText("Enables possible Draugr attacks. They behave a bit differently from human attackers\nand might not always respect all the other settings.")
 	ElseIf opt == followersOID
 		SetInfoText("Includes followers in the scenes. They won't trigger any attacks but human enemies will take advantage of any follower you have with you.")
 	ElseIf opt == stripArmbinderOID
@@ -861,8 +779,6 @@ Event OnOptionHighlight(int opt)
 		SetInfoText("Resets the scenes, clears all attackers making them hostile and removes player from the used temporary faction.\nWon't stop running SexLab animations.")
 	ElseIf opt == overrideStripOID
 		SetInfoText("Ignore SexLab armor strip options.")
-;	ElseIf opt == priceBiasOID
-;		SetInfoText("Worn devices affect buy and sell prices, making items more expensive to buy and cheaper to sell.")
 	ElseIf opt == suspendOID
 		SetInfoText("Other mods can temporarily suspend the attack scenes. Clicking this will reset the setting and resume starting the scenes.")
 	ElseIf opt == enemyItemChanceOID
@@ -885,8 +801,7 @@ function uninstall()
 	ShowMessage("Close the menu and wait for a success message.\nThe mod is safe to remove afterwards.\nIf you plan to re-install, you need to do a clean save to have the mod properly start afterwards.", false)
 	Utility.wait(0.1)
 	pl.RemoveSpell(cloakSpell)
-	;creatureQuest.StopCreatureScene()
-	;pl.RemovePerk(pricePerk)
+
 	util.Uninstall()
 endFunction
 
@@ -899,13 +814,7 @@ event OnGameReload()
 	EndIf
 	compat.CompatibilityCheck()
 	PyUtils()
-;	if !util.libs.BoundAnimsAvailable || !libs.config.useBoundAnims
-;		stripArmbinder = true
-;	endif
-;	if !SexLab.AllowedCreature(creatureQuest.DraugrRace)
-;		creaturesEnabled = false
-;		WD_CreatureEnabler.SetValueInt(0)
-;	endif
+
 	util.log("Deviously Helpless Redux " + util.GetVersionString() + " loaded.")
 endEvent
 

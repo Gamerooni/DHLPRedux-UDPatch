@@ -1,4 +1,4 @@
-﻿Scriptname WD_DeviceManager extends Quest
+Scriptname WD_DeviceManager extends Quest
 {Manipulates Devious Devices in actor inventory}
 ; This would be so much easier with at the very least some 2d arrays >.>
 
@@ -144,11 +144,6 @@ Function StoreInventory(Actor akActor, bool ignoreWornType = true)
 		EndIf				
 	EndWhile
 	
-	; Special cases, which have the generic blocking keyword
-;	if akActor.GetItemCount(util.beltRusted) > 0 && (!ignoreWornType || !akActor.WornHasKeyword(libs.zad_DeviousBelt))
-;		FormListAdd(akActor, beltlist, util.beltRusted, false)
-;	EndIf
-	
 	; Enemies might have some items on them as well...
 	If (!ignoreWornType || !akActor.WornHasKeyword(libs.zad_DeviousBra)) && Utility.RandomInt(0, 99) < config.enemyItemChance
 		FormListAdd(akActor, bralist, GetPreferredDevice(libs.zad_DeviousBra), false)
@@ -245,7 +240,6 @@ restrictiveChance sets the probablity to equip gags, armbinders and blindfolds.}
 	; The lists array should be traversed from start to end to equip plugs before belts
 	int i = 0
 	int count
-;	bool skipEvents = false
 	While i < lists.length
 		count = FormListCount(akActor, lists[i])
 		if count > 0 && ( i < 8 || Utility.RandomInt(0, 99) < restrictiveChance ) && ( i > 1 || !akActor.WornHasKeyword(libs.zad_DeviousBelt) )  
@@ -254,7 +248,6 @@ restrictiveChance sets the probablity to equip gags, armbinders and blindfolds.}
 			Armor device = FormListGet(akActor, lists[i], Utility.RandomInt(0, count - 1)) as Armor
 			if device 
 				util.log("Equipping " + akActor.GetLeveledActorBase().GetName() + " with " + device.GetName() + ".")
-			;	util.ManipulateDevice(akActor, device, true, skipEvents = false)
 				libs.LockDevice( akActor, device )
 			endIf
 			; Possible conflict if equipping the body harness, and collars afterward

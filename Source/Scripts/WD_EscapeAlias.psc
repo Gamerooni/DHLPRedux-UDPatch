@@ -1,4 +1,4 @@
-﻿Scriptname WD_EscapeAlias extends ReferenceAlias
+Scriptname WD_EscapeAlias extends ReferenceAlias
 
 WD_Util Property util Auto
 WD_Creatures Property creatureQuest Auto
@@ -10,9 +10,6 @@ bool creature = false
 Function StartEscape(bool creatures = false, bool armbinder = false)
 	util.log("Starting daring escape.")
 	creature = creatures
-;	If !armbinder 
-;		util.libs.LockDevice(util.libs.PlayerRef, util.libs.armbinder, force = true)
-;	EndIf
 	tick = 0
 	RegisterForSingleUpdate(10)
 EndFunction
