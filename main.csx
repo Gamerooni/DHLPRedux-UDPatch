@@ -10,10 +10,12 @@ using Mutagen.Bethesda.Environments;
 using Mutagen.Bethesda.Plugins.Cache;
 using Mutagen.Bethesda.Plugins.Binary.Parameters;
 using Mutagen.Bethesda.Plugins.Order;
+using System.Reflection;
+using Mutagen.Bethesda.Plugins.Cache.Internals.Implementations;
 
 // General process for creating a mod
 var mod = SkyrimMod.CreateFromBinary(
-    ModPath.FromPath("HelloWorldMod.esp"),
+    ModPath.FromPath("DHLP_Redux.esp"),
     release: SkyrimRelease.SkyrimSE
 );
 
@@ -21,52 +23,57 @@ var mod = SkyrimMod.CreateFromBinary(
 // We must turn the mod to a linkCache before we can do anything
 ILinkCache scriptLinkCache = mod.ToMutableLinkCache();
 
-// Get quest by FormKey (you can use this format for any record)
-var questKey = FormKey.Factory("000D61:HelloWorldMod.esp");
-
-// Search for this FormKey in our linkCache
-if (scriptLinkCache.TryResolve<Quest>(questKey, out var quest)) {
-    Console.WriteLine($"We found our quest via FormKey: {quest.EditorID}");
-}
-
-// Search for our HelloModQuest by checking scirpts
-foreach (var helloQuest in mod.EnumerateMajorRecords<IQuest>()) {
-    var vmad = helloQuest.VirtualMachineAdapter;
-    if (vmad?.Scripts != null 
-    && vmad.Scripts.Find(x => x.Name == "HelloModQuestScript") != null) {
-        Console.WriteLine($"We found this quest by searching for the script: {quest.EditorID}");
+public bool TryDeleteRecordByEditorId(string editorId, Type recordType) {
+    MethodInfo resolveInfoGeneric = typeof(ILinkCache)
+            .GetMethods()
+            .FirstOrDefault(
+                x => x.Name.Equals("TryResolve", StringComparison.OrdinalIgnoreCase)
+                && x.IsGenericMethod
+                && x.GetParameters().Length == 2
+            )
+            ?.MakeGenericMethod(recordType);
+    // MethodInfo resolveInfo = typeof(ImmutableModLinkCache).GetMethod(nameof(ImmutableModLinkCache.TryResolve<>));
+    // MethodInfo resolveInfoGeneric = resolveInfo.MakeGenericMethod(recordType);
+    object[] parameters = [editorId, null];
+    if ((bool)resolveInfoGeneric.Invoke(scriptLinkCache, parameters)) {
+        MajorRecord majorRecord = (MajorRecord)parameters[1];
+        // delete it
+        mod.Remove(majorRecord);
+        return true;
+    } else {
+        return false;
     }
 }
 
-// Process all quests at once
-foreach (var anyQuest in mod.EnumerateMajorRecords<IQuest>()) {
-    anyQuest.EditorID += "PatchedAndScripted";
-    Console.WriteLine($"{anyQuest.EditorID}");
+var recordsToDelete = new Dictionary<string, Type>() {
+    {"WD_beltRusted_script", typeof(Armor)},
+    {"WD_beltRusted_inv", typeof(Armor)},
+    {"WD_beltRusted_AA", typeof(ArmorAddon)},
+    {"wd_rustedKey", typeof(Key)},
+    {"wd_rKeyList", typeof(LeveledItem)},
+    {"LootDraugrChestBossBase", typeof(LeveledItem)},
+    {"DeathItemSkeleton", typeof(LeveledItem)},
+    {"LootDraugrRandom", typeof(LeveledItem)},
+    {"WD_rustyKeyDestroyMsg", typeof(Message)},
+    {"WD_rustyBeltMsg", typeof(Message)},
+    {"WD_beltRustedTexture", typeof(TextureSet)},
+};
+
+foreach (var record in recordsToDelete) {
+    TryDeleteRecordByEditorId(record.Key, record.Value);
 }
 
-// Demonstartion of how to work with multiple esps
-var patchMod = SkyrimMod.CreateFromBinary(
-    ModPath.FromPath("HelloWorldModPatch.esp"),
-    // You can use importMask to selectively grab parts of mods
-    importMask: new GroupMask() {
-        Quests = true,
-    },
-    release: SkyrimRelease.SkyrimSE
-);
+var creaturesQuest = scriptLinkCache.Resolve<IQuest>("WD_Creatures");
 
-// Create load order
-var loadOrder = new LoadOrder<ISkyrimMod>();
-loadOrder.Add(mod);
-loadOrder.Add(patchMod);
-
-// Iterate through the combined mods
-foreach (var quest in loadOrder.PriorityOrder.Quest().WinningOverrides()) {
-    Console.WriteLine($"Here's our quest from the combined mods: {quest.EditorID}");
+if (creaturesQuest.VirtualMachineAdapter?.Scripts != null) {
+    foreach (var script in creaturesQuest.VirtualMachineAdapter?.Scripts) {
+        script.Properties.RemoveAll(prop => prop.Name == "rustedBeltMsg");
+    }
 }
 
 // Write to patch
 mod.WriteToBinary(
-    "HelloWorldModPatch.esp",
+    "DHLP_Redux.esp",
     param: new BinaryWriteParameters() {
         ModKey = ModKeyOption.CorrectToPath
     }

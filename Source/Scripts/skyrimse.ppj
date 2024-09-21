@@ -1,0 +1,48 @@
+<?xml version='1.0'?><!-- Game is either sse, tesv, or fo4 -->
+<PapyrusProject xmlns="PapyrusProject.xsd" 
+    Flags="TESV_Papyrus_Flags.flg" 
+    Game="sse" 
+    Output="..\..\Scripts" 
+    Optimize="true"
+    Anonymize="true" 
+    Release="false" 
+    Final="false">
+    <Variables>
+        <!-- The folder this mod is located in. You should change this! -->
+        <Variable Name="modname" Value=""/>
+        <!-- Path from root to your MO2 mods folder -->
+        <Variable Name="modpath" Value="."/>
+        <!-- Path to Skyrim installation -->
+        <!-- <Variable Name="gamepath" Value="E:\SteamLibrary\steamapps\common\Skyrim Special Edition"/> -->
+    </Variables>
+    <Imports>
+    
+        <Import>.</Import>
+        <!-- If you need to import script sources from a folder, put them somewhere in your modlist and do this:-->
+        <!-- <Import>@modspath\Dependency Mod\Scripts\source</Import> -->
+        <!-- <Import>@gamepath\Data\Scripts\Source</Import> -->
+
+        <!-- If you instead prefer to use Git remotes (highly recommended), just link to the scripts folder in the repo:-->
+        <Import>https://github.com/Gamerooni/Gamerooni-Papyrus-Sources/tree/main/DHLPRedux</Import>
+        <Import>https://github.com/ponzipyramid/DeviousDevicesNG/tree/main/dist/scripts/source</Import>
+        <Import>https://github.com/eeveelo/SexLab/tree/development/scripts/Source</Import>
+        <Import>https://github.com/ponzipyramid/PyramidUtils/tree/main/dist/Source/Scripts</Import>
+        <Import>https://github.com/Osmosis-Wrench/racemenu-scripts/tree/main/scripts/source</Import>
+        <Import>https://github.com/eeveelo/PapyrusUtil/tree/master/Scripts/Source</Import>
+        <Import>https://github.com/MrOctopus/nl_online/tree/main/skse64/source</Import>
+        <Import>https://github.com/Gamerooni/Gamerooni-Papyrus-Sources/tree/main/SLIF</Import>
+        <Import>https://github.com/MrOctopus/nl_online/tree/main/skyui/source</Import>
+        <Import>https://github.com/Gamerooni/Gamerooni-Papyrus-Sources/tree/main/DeviousDevicesSE</Import>
+        <Import>https://github.com/ozooma10/OSLAroused/tree/master/contrib/Distribution/PapyrusSources</Import>
+        <Import>https://github.com/XxX-Daniil-underscore-Zaikin-XxX/DanzaPapyrusSources/tree/main/XPMSE</Import>
+        <Import>https://github.com/XxX-Daniil-underscore-Zaikin-XxX/DanzaPapyrusSources/tree/main/FNIS</Import>
+        <Import>https://github.com/Exit-9B/MCM-Helper/tree/main/scripts/public</Import>
+        <Import>https://github.com/ponzipyramid/MfgFixNG/tree/main/dist/source/scripts</Import>
+        <Import>https://github.com/MrOctopus/nl_online/tree/main/sse/source</Import>
+        <!-- Here is another example: -->
+        <!-- <Import>https://github.com/fireundubh/skyui/tree/master/dist/Data/Scripts/Source</Import> -->
+    </Imports>
+    <Folders>
+        <Folder>.</Folder>
+    </Folders>
+</PapyrusProject>

@@ -1,8 +1,0 @@
-FormKey: 000818:DHLP_Redux.esp
-EditorID: WD_rustyKeyDestroyMsg
-Description:
-  TargetLanguage: English
-  Value: You barely manage to open the belt before the rusted key crumbles into the lock.
-INAM: 0x00000000
-Flags:
-- MessageBox
