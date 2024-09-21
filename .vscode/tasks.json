@@ -69,7 +69,7 @@
         // Deserialize ESP and compile Papyrus
         {
             "label": "Build All",
-            "dependsOn": ["pyro: Compile Project (skyrimse.ppj)", "Spriggit: Deserialize project"],
+            "dependsOn": ["Spriggit: Deserialize project"],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -78,7 +78,7 @@
         // Compile papyrus (to catch compile errors), serialize esp
         {
             "label": "Prepare Sources",
-            "dependsOn": ["pyro: Compile Project (skyrimse.ppj)", "Spriggit: Serialize project"]
+            "dependsOn": ["Spriggit: Serialize project"]
         },
         // Run scripts. We do this every time we serialize.
         {
