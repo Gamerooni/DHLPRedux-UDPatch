@@ -1,0 +1,8 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.28.0
+ModKey: HelloWorldModPatch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Author: DEFAULT
+  INTV: 1
