@@ -15,7 +15,7 @@ using Mutagen.Bethesda.Plugins.Cache.Internals.Implementations;
 
 // General process for creating a mod
 var mod = SkyrimMod.CreateFromBinary(
-    ModPath.FromPath("DHLP_Redux_bak.esp"),
+    ModPath.FromPath("DHLP_Redux.esp"),
     release: SkyrimRelease.SkyrimSE
 );
 
