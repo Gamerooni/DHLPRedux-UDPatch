@@ -1,0 +1,18 @@
+FormKey: 00082E:DHLP_Redux.esp
+EditorID: WD_effDraugrVibrate
+Name:
+  TargetLanguage: English
+  Value: Periodically Vibrating, Draugr
+Keywords:
+- 00082D:DHLP_Redux.esp
+Flags:
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

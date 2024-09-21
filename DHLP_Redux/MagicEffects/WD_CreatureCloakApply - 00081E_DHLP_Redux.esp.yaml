@@ -1,0 +1,128 @@
+FormKey: 00081E:DHLP_Redux.esp
+EditorID: WD_CreatureCloakApply
+VirtualMachineAdapter:
+  Scripts:
+  - Name: WD_CreatureCloak
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: creatures
+      Object: 000819:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: util
+      Object: 000D62:DHLP_Redux.esp
+Name:
+  TargetLanguage: English
+  Value: WD Creature Cloak apply mgef
+Flags:
+- NoHitEvent
+- HideInUI
+- Painless
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: Concentration
+TargetType: Aimed
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsRaceConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Race: 0CDD84:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00081B:DHLP_Redux.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: IsSneakingConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetDetectedConditionData
+    TargetNpc: 000014:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00081A:DHLP_Redux.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000805:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000826:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: IsWeaponOutConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsWeaponMagicOutConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000839:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Faction: 029567:Devious Devices - Integration.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 00081E:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 000014:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    Faction: 02430D:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    Faction: 00E50F:SexLab.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 0F52AB:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 10EAD9:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDisabledConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsGhostConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData

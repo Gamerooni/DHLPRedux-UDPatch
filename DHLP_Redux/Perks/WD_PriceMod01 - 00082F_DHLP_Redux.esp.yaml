@@ -1,0 +1,249 @@
+FormKey: 00082F:DHLP_Redux.esp
+EditorID: WD_PriceMod01
+Name:
+  TargetLanguage: English
+  Value: Helplessly broke
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DFA:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 011B1A:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.3
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DF9:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 011B1A:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.7
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 007EB8:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.7
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DF8:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DF8:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003330:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 017C43:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DF7:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DFA:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.9
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 00CA3A:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.7
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DF7:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003330:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 003DF8:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 017C43:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 007EB8:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.3
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: WornHasKeywordConditionData
+        Keyword: 00CA3A:Devious Devices - Assets.esm
+      ComparisonValue: 1
+  EntryPoint: ModBuyPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1.3

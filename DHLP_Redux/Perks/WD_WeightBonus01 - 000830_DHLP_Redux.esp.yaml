@@ -1,0 +1,23 @@
+FormKey: 000830:DHLP_Redux.esp
+EditorID: WD_WeightBonus01
+Name:
+  TargetLanguage: English
+  Value: Experienced Slave
+Description:
+  TargetLanguage: English
+  Value: After countless of hours of wearing different kinds of restraints, you have gotten used to them and they weigh nothing when worn.
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 02B5F0:Devious Devices - Integration.esm
+      ComparisonValue: 1
+  EntryPoint: ModArmorWeight
+  PerkConditionTabCount: 2
+  Value: 0

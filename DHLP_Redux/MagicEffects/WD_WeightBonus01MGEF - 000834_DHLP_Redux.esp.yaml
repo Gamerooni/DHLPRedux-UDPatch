@@ -1,0 +1,23 @@
+FormKey: 000834:DHLP_Redux.esp
+EditorID: WD_WeightBonus01MGEF
+Name:
+  TargetLanguage: English
+  Value: Experienced Slave
+Flags:
+- NoHitEvent
+- NoDuration
+- NoMagnitude
+- NoArea
+- Painless
+- NoHitEffect
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+DualCastScale: 1
+PerkToApply: 000830:DHLP_Redux.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: After countless of hours of wearing different kinds of restraints, you have gotten used to them and they weigh nothing when worn.

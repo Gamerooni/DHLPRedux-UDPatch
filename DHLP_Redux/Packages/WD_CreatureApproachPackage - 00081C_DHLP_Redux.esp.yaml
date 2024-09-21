@@ -1,0 +1,66 @@
+FormKey: 00081C:DHLP_Redux.esp
+EditorID: WD_CreatureApproachPackage
+Flags:
+- PreferredSpeed
+- IgnoreCombat
+Type: Package
+PreferredSpeed: Run
+Unknown: 78
+ScheduleMonth: -1
+ScheduleDayOfWeek: 255
+ScheduleHour: -1
+ScheduleMinute: -1
+Unknown3: 0x000000
+PackageTemplate: 0F1A3F:Skyrim.esm
+DataInputVersion: 1
+Data:
+- Key: 0
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 000014:Skyrim.esm
+      Radius: 170
+- Key: 2
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 4
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 9
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 000014:Skyrim.esm
+      Radius: 100
+- Key: 10
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Data: 10000
+- Key: 11
+  Value:
+    MutagenObjectType: PackageDataTarget
+    Type: SingleRef
+    Target:
+      MutagenObjectType: PackageTargetSpecificReference
+      Reference: 000014:Skyrim.esm
+- Key: 13
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 15
+  Value:
+    MutagenObjectType: PackageDataBool
+XnamMarker: 0x10
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

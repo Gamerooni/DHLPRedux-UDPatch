@@ -1,0 +1,34 @@
+FormKey: 026724:Skyrim.esm
+EditorID: WarlockFaction
+Version2: 14
+Relations:
+- Target: 026724:Skyrim.esm
+  Reaction: Ally
+- Target: 02D1DF:Skyrim.esm
+  Reaction: Ally
+- Target: 034B74:Skyrim.esm
+  Reaction: Ally
+- Target: 03997D:Skyrim.esm
+  Reaction: Enemy
+- Target: 044CCD:Skyrim.esm
+  Reaction: Friend
+- Target: 044CCE:Skyrim.esm
+  Reaction: Friend
+- Target: 044CCF:Skyrim.esm
+  Reaction: Friend
+- Target: 08A1B5:Skyrim.esm
+  Reaction: Ally
+- Target: 0A88C6:Skyrim.esm
+  Reaction: Friend
+- Target: 0AA784:Skyrim.esm
+  Reaction: Friend
+- Target: 0E0CDA:Skyrim.esm
+  Reaction: Ally
+- Target: 000802:DHLP_Redux.esp
+  Reaction: Ally
+Flags:
+- CanBeOwner
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

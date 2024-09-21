@@ -1,0 +1,82 @@
+FormKey: 000819:DHLP_Redux.esp
+EditorID: WD_Creatures
+VirtualMachineAdapter:
+  Scripts:
+  - Name: WD_Creatures
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BossChest
+      Object: 00081F:DHLP_Redux.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: chestFinder
+      Object: 00081F:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: config
+      Object: 000800:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DraugrRace
+      Object: 000D53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EscapeAlias
+      Object: 000819:DHLP_Redux.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: gatherPackage
+      Object: 00081C:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HelplessFaction
+      Object: 000802:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: libs
+      Object: 00F624:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pl
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: rustedBeltMsg
+      Object: 000820:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: sandboxPackage
+      Object: 00081D:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SexLab
+      Object: 000D62:SexLab.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SexlabFaction
+      Object: 00E50F:SexLab.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: util
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_CreatureSceneRunning
+      Object: 00081A:DHLP_Redux.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000819:DHLP_Redux.esp
+      Alias: 0
+    Scripts:
+    - Name: WD_EscapeAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: creatureQuest
+        Object: 000819:DHLP_Redux.esp
+      - MutagenObjectType: ScriptStringProperty
+        Name: listName
+        Data: dhlp-creatureList
+      - MutagenObjectType: ScriptObjectProperty
+        Name: util
+        Object: 000D62:DHLP_Redux.esp
+Flags:
+- StartGameEnabled
+- 0x10
+Priority: 30
+NextAliasID: 1
+Aliases:
+- Name: CreatureEscapeAlias
+  Flags:
+  - Optional
+  - AllowReuseInQuest
+  VoiceTypes: Null

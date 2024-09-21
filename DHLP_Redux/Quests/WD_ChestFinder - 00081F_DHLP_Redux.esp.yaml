@@ -1,0 +1,28 @@
+FormKey: 00081F:DHLP_Redux.esp
+EditorID: WD_ChestFinder
+NextAliasID: 5
+Aliases:
+- ID: 3
+  Name: PlayerAlias
+  Flags:
+  - AllowReuseInQuest
+  - AllowReserved
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Type: Location
+  Name: CurrentDungeon
+  Flags:
+  - AllowReuseInQuest
+  - AllowReserved
+  Location:
+    AliasID: 3
+- Name: DungeonBossChest
+  Flags:
+  - Optional
+  - AllowReuseInQuest
+  - AllowReserved
+  Location:
+    AliasID: 4
+    RefType: 0130F8:Skyrim.esm
+  VoiceTypes: Null

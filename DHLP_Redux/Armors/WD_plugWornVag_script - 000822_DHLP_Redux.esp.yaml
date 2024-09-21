@@ -1,0 +1,36 @@
+FormKey: 000822:DHLP_Redux.esp
+EditorID: WD_plugWornVag_script
+ObjectEffect: 000825:DHLP_Redux.esp
+WorldModel:
+  Male:
+    Model:
+      File: Devious\Devices\plugSoulgemVag_go.nif
+      Data: 0x020000000000000000000000
+      AlternateTextures:
+      - Name: plugSoulgemVag002:1
+        NewTexture: 01A793:Devious Devices - Assets.esm
+        Index: 1
+      - Name: plugSoulgemVag002:2
+        NewTexture: 01A793:Devious Devices - Assets.esm
+BodyTemplate:
+  FirstPersonFlags:
+  - 0x1000000
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000019:Skyrim.esm
+Keywords:
+- 003331:Devious Devices - Assets.esm
+- 02F16E:SexLab.esm
+- 0FF9FB:Skyrim.esm
+- 0C27BD:Skyrim.esm
+- 01DD7C:Devious Devices - Assets.esm
+- 01E897:Devious Devices - Integration.esm
+- 01DDCE:Devious Devices - Integration.esm
+- 0208FB:Devious Devices - Integration.esm
+- 01DDCB:Devious Devices - Integration.esm
+- 01EDFB:Devious Devices - Integration.esm
+Description:
+  TargetLanguage: English
+  Value: Item reference reserved for scripts interaction. This should not appear in your inventory. Check your Devious Devices mod configuration.
+Armature:
+- 0191E7:Devious Devices - Assets.esm

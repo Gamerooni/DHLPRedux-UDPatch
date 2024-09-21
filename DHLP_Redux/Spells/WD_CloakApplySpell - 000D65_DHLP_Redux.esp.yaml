@@ -1,0 +1,25 @@
+FormKey: 000D65:DHLP_Redux.esp
+EditorID: WD_CloakApplySpell
+Name:
+  TargetLanguage: English
+  Value: WD Cloak Apply
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- AreaEffectIgnoresLOS
+- IgnoreResistance
+- NoAbsorbOrReflect
+CastType: Concentration
+TargetType: Aimed
+Effects:
+- BaseEffect: 000D63:DHLP_Redux.esp
+  Data:
+    Duration: 900
+- BaseEffect: 00081E:DHLP_Redux.esp
+  Data:
+    Duration: 900
+- BaseEffect: 000829:DHLP_Redux.esp
+  Data:
+    Duration: 900

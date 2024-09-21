@@ -1,0 +1,24 @@
+FormKey: 05C84E:Skyrim.esm
+EditorID: CurrentFollowerFaction
+Version2: 3
+Relations:
+- Target: 000DB1:Skyrim.esm
+  Reaction: Ally
+- Target: 01F259:Skyrim.esm
+  Reaction: Ally
+- Target: 05C84E:Skyrim.esm
+- Target: 068D78:Skyrim.esm
+  Reaction: Ally
+Flags:
+- Vendor
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorBuySellList: 06CB48:Skyrim.esm
+VendorValues:
+  EndHour: 24
+  NotSellBuy: True
+VendorLocation:
+  Target:
+    MutagenObjectType: LocationFallback
+    Type: NearSelf

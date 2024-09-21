@@ -1,0 +1,64 @@
+FormKey: 000823:DHLP_Redux.esp
+EditorID: WD_plugWornAn_inv
+VirtualMachineAdapter:
+  Scripts:
+  - Name: zadPlugScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Aroused
+      Object: 04290F:SexLabAroused.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: deviceInventory
+      Object: 000823:DHLP_Redux.esp
+    - MutagenObjectType: ScriptStringProperty
+      Name: deviceName
+      Data: Anal Plug
+    - MutagenObjectType: ScriptObjectProperty
+      Name: deviceQuest
+      Object: 00F624:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: deviceRendered
+      Object: 000824:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: libs
+      Object: 00F624:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Lockpick
+      Object: 00000A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: zad_DeviceMsg
+      Object: 01878C:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: zad_DeviousBelt
+      Object: 003330:Devious Devices - Assets.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: zad_DeviousDevice
+      Object: 01DD7D:Devious Devices - Assets.esm
+Name:
+  TargetLanguage: English
+  Value: Worn Anal Soulgem plug
+WorldModel:
+  Male:
+    Model:
+      File: Devious\Devices\plugSoulgemAn_go.nif
+      Data: 0x020000000000000000000000
+      AlternateTextures:
+      - Name: plugSoulgemAn002:1
+        NewTexture: 01A794:Devious Devices - Assets.esm
+        Index: 1
+      - Name: plugSoulgemAn002:2
+        NewTexture: 01A794:Devious Devices - Assets.esm
+BodyTemplate:
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000019:Skyrim.esm
+Keywords:
+- 02F16E:SexLab.esm
+- 0FF9FB:Skyrim.esm
+- 0C27BD:Skyrim.esm
+- 02B5F0:Devious Devices - Integration.esm
+Description:
+  TargetLanguage: English
+  Value: An ancient and discolored soulgem anal plug that fills the wearer with a profound sense of fullness.
+Value: 125
+Weight: 1

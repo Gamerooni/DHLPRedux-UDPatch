@@ -1,0 +1,60 @@
+FormKey: 000829:DHLP_Redux.esp
+EditorID: WD_CreaturePacifier
+VirtualMachineAdapter:
+  Scripts:
+  - Name: WD_CreaturePacifier
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: util
+      Object: 000D62:DHLP_Redux.esp
+Name:
+  TargetLanguage: English
+  Value: WD Companion creature pacifier
+Flags:
+- NoHitEvent
+- NoArea
+- HideInUI
+- Painless
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: Concentration
+TargetType: Aimed
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00082A:DHLP_Redux.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 000829:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    Faction: 000802:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: IsInListConditionData
+    FormList: 000828:DHLP_Redux.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    Faction: 01BCC0:Skyrim.esm
+  ComparisonValue: 1

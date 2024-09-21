@@ -1,0 +1,14 @@
+FormKey: 000835:DHLP_Redux.esp
+EditorID: WD_WeightBonus00SPL
+Name:
+  TargetLanguage: English
+  Value: Accustomed Slave
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Type: Ability
+CastType: FireAndForget
+Effects:
+- BaseEffect: 000833:DHLP_Redux.esp
+  Data: {}

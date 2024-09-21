@@ -1,0 +1,17 @@
+FormKey: 00080F:DHLP_Redux.esp
+EditorID: WD_SanguinareVampiris
+Name:
+  TargetLanguage: English
+  Value: Sanguinare Vampiris
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- ManualCostCalc
+Type: Disease
+TargetType: Touch
+Effects:
+- BaseEffect: 00080E:DHLP_Redux.esp
+  Data:
+    Magnitude: 25

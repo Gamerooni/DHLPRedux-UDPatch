@@ -1,0 +1,64 @@
+FormKey: 000800:DHLP_Redux.esp
+EditorID: WD_ConfigQuest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: WD_Config
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: cloakSpell
+      Object: 000D68:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: compat
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: creatureQuest
+      Object: 000819:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: devman
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: libs
+      Object: 00F624:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptStringProperty
+      Name: ModName
+      Data: Deviously Helpless Redux
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pl
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerEventAlias
+      Object: 000827:DHLP_Redux.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SexLab
+      Object: 000D62:SexLab.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: util
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_CreatureEnabler
+      Object: 00081B:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_PlayerHasWeaponEquipped
+      Object: 000805:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_SheathedTrigger
+      Object: 000826:DHLP_Redux.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000800:DHLP_Redux.esp
+      Alias: 0
+    Scripts:
+    - Name: SKI_PlayerLoadGameAlias
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+NextAliasID: 1
+Aliases:
+- Name: PlayerAlias
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

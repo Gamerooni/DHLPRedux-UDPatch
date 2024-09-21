@@ -1,0 +1,13 @@
+FormKey: 000838:DHLP_Redux.esp
+EditorID: WD_LevelUp01
+Description:
+  TargetLanguage: English
+  Value: >-
+    After countless of hours of having severe restraints placed on you, you can now wear them with the experience of a true slave.
+
+    ----------
+
+    Restraints now weigh nothing when worn.
+INAM: 0x00000000
+Flags:
+- MessageBox

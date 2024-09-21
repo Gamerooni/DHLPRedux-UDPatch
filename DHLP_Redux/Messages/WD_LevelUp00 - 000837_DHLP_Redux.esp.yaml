@@ -1,0 +1,13 @@
+FormKey: 000837:DHLP_Redux.esp
+EditorID: WD_LevelUp00
+Description:
+  TargetLanguage: English
+  Value: >-
+    After hours and hours of wearing demanding restraints, you've become somewhat comfortable with their weight.
+
+    ----------------
+
+    Restraints only weigh half their usual weight when worn.
+INAM: 0x00000000
+Flags:
+- MessageBox

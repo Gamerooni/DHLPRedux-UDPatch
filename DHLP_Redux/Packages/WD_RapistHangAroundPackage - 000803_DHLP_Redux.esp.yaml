@@ -1,0 +1,75 @@
+FormKey: 000803:DHLP_Redux.esp
+EditorID: WD_RapistHangAroundPackage
+VirtualMachineAdapter:
+  Scripts:
+  - Name: WD_RapistCheerPackage
+  ScriptFragments:
+    FileName: WD_RapistCheerPackage
+    OnBegin:
+      ExtraBindDataVersion: 1
+      ScriptName: WD_RapistCheerPackage
+      FragmentName: Fragment_0
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: WD_RapistCheerPackage
+      FragmentName: Fragment_1
+Type: Package
+PreferredSpeed: Run
+Unknown: 32
+Unknown2: 4
+ScheduleMonth: -1
+ScheduleDayOfWeek: 255
+ScheduleHour: -1
+ScheduleMinute: -1
+Unknown3: 0x000000
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetDistanceConditionData
+    Target: 000014:Skyrim.esm
+  ComparisonValue: 180
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThan
+  Data:
+    MutagenObjectType: GetDistanceConditionData
+    Target: 000014:Skyrim.esm
+  ComparisonValue: 100
+IdleAnimations:
+  Type: Random
+  TimerSetting: 4
+  Animations:
+  - 0D8730:Skyrim.esm
+  - 0D8731:Skyrim.esm
+  - 0D8732:Skyrim.esm
+  - 0D8733:Skyrim.esm
+PackageTemplate: 082571:Skyrim.esm
+DataInputVersion: 2
+Data:
+- Key: 3
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationFallback
+        Type: NearPackageStart
+- Key: 10
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 15
+  Value:
+    MutagenObjectType: PackageDataFloat
+- Key: 16
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+XnamMarker: 0x11
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

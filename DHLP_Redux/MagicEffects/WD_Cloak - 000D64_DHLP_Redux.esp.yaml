@@ -1,0 +1,18 @@
+FormKey: 000D64:DHLP_Redux.esp
+EditorID: WD_Cloak
+Name:
+  TargetLanguage: English
+  Value: WD Cloak mgef
+Flags:
+- NoHitEvent
+- HideInUI
+- Painless
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 000D65:DHLP_Redux.esp
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,24 @@
+FormKey: 000831:DHLP_Redux.esp
+EditorID: WD_WeightBonus00
+Name:
+  TargetLanguage: English
+  Value: Accustomed Slave
+Description:
+  TargetLanguage: English
+  Value: After hours of wearing different kinds of restraints, you have gotten used to them and they weigh considerably less when worn.
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 02B5F0:Devious Devices - Integration.esm
+      ComparisonValue: 1
+  EntryPoint: ModArmorWeight
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.5

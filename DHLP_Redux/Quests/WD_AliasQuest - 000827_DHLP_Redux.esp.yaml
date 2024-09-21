@@ -1,0 +1,77 @@
+FormKey: 000827:DHLP_Redux.esp
+EditorID: WD_AliasQuest
+VirtualMachineAdapter:
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000827:DHLP_Redux.esp
+      Alias: 1
+    Scripts:
+    - Name: WD_EventArmCuffs
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: DefaultProbability
+        Data: 16
+      - MutagenObjectType: ScriptStringProperty
+        Name: Help
+        Data: Chance to fumble on attack with arm cuffs equipped.\nFrom Deviously Helpless.
+      - MutagenObjectType: ScriptObjectProperty
+        Name: libs
+        Object: 00F624:Devious Devices - Integration.esm
+      - MutagenObjectType: ScriptStringProperty
+        Name: name
+        Data: Arm cuff fumble
+      - MutagenObjectType: ScriptObjectProperty
+        Name: util
+        Object: 000D62:DHLP_Redux.esp
+    - Name: WD_EventLegCuffs
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: DefaultProbability
+        Data: 20
+      - MutagenObjectType: ScriptStringProperty
+        Name: Help
+        Data: Chance to trip over when wearing leg cuffs.\nFrom Deviously Helpless.
+      - MutagenObjectType: ScriptObjectProperty
+        Name: libs
+        Object: 00F624:Devious Devices - Integration.esm
+      - MutagenObjectType: ScriptStringProperty
+        Name: name
+        Data: Trip over
+      - MutagenObjectType: ScriptObjectProperty
+        Name: util
+        Object: 000D62:DHLP_Redux.esp
+    - Name: WD_eventWornVibrate
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: DefaultProbability
+        Data: 25
+      - MutagenObjectType: ScriptStringProperty
+        Name: Help
+        Data: Base vibration chance of the plugs used by the Draugr in scenes from Deviously Helpless.
+      - MutagenObjectType: ScriptObjectProperty
+        Name: libs
+        Object: 00F624:Devious Devices - Integration.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: LocTypeDraugrCrypt
+        Object: 0130E2:Skyrim.esm
+      - MutagenObjectType: ScriptStringProperty
+        Name: name
+        Data: Draugr plug vibration
+      - MutagenObjectType: ScriptObjectProperty
+        Name: WD_effVibrateDraugr
+        Object: 00082D:DHLP_Redux.esp
+Flags:
+- StartGameEnabled
+- 0x10
+Priority: 20
+NextAliasID: 2
+Aliases:
+- ID: 1
+  Name: PlayerEventAlias
+  Flags:
+  - Optional
+  - AllowReuseInQuest
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

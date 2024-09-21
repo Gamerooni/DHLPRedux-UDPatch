@@ -1,0 +1,86 @@
+FormKey: 000804:DHLP_Redux.esp
+EditorID: WD_RapistSandboxPackage
+Type: Package
+PreferredSpeed: Run
+Unknown: 32
+ScheduleMonth: -1
+ScheduleDayOfWeek: 255
+ScheduleHour: -1
+ScheduleMinute: -1
+Unknown3: 0x000000
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00083C:DHLP_Redux.esp
+  ComparisonValue: 1
+PackageTemplate: 05FAD4:Skyrim.esm
+DataInputVersion: 12
+Data:
+- Key: 0
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationFallback
+        Type: NearEditorLocation
+      Radius: 512
+- Key: 1
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 3
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 4
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 5
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 6
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 7
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+- Key: 14
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 25
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 27
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 30
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationFallback
+        Type: NearSelf
+      Radius: 2000
+- Key: 32
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Data: 50
+- Key: 34
+  Value:
+    MutagenObjectType: PackageDataBool
+    Data: True
+XnamMarker: 0x23
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

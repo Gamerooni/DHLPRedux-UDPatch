@@ -1,0 +1,213 @@
+FormKey: 000D62:DHLP_Redux.esp
+EditorID: WD_Main
+VirtualMachineAdapter:
+  Scripts:
+  - Name: WD_DeviceManager
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: compat
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: config
+      Object: 000800:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: libs
+      Object: 00F624:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptStringProperty
+      Name: ModName
+      Data: dhlp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: util
+      Object: 000D62:DHLP_Redux.esp
+  - Name: WD_Util
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ActorTypeNPC
+      Object: 013794:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: approachPackage
+      Object: 000D6A:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: armbinderQuest
+      Object: 029AD2:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Aroused
+      Object: 04290F:SexLabAroused.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: attackChasePackage
+      Object: 00083A:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: cloakApplySpell
+      Object: 000D65:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: cloakSpell
+      Object: 000D68:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: compat
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: config
+      Object: 000800:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: creatureQuest
+      Object: 000819:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CurrentFollowerFaction
+      Object: 05C84E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: devman
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Dialogue
+      Object: 000806:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dialogueID
+      Object: 00080B:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EscapeAlias
+      Object: 000D62:DHLP_Redux.esp
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: gatherPackage
+      Object: 000803:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HelplessFaction
+      Object: 000802:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HirelingFaction
+      Object: 0BD738:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: libs
+      Object: 00F624:Devious Devices - Integration.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pl
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerFollowerCount
+      Object: 0BCC98:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: sandboxPackage
+      Object: 000804:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SexLab
+      Object: 000D62:SexLab.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SexlabFaction
+      Object: 00E50F:SexLab.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: stealGear
+      Object: 00080C:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Torch
+      Object: 01D4EC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: vampireDisease
+      Object: 0B8778:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VampireKeyword
+      Object: 0A82BB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: vampirism
+      Object: 00080F:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_Chasing
+      Object: 00083B:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_CreatureSceneRunning
+      Object: 00081A:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_Debug
+      Object: 000810:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_PlayerHasWeaponEquipped
+      Object: 000805:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_Raped
+      Object: 00083C:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_SceneRunning
+      Object: 00082A:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_SuspendScenes
+      Object: 000839:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WDVampireDisease
+      Object: 00080E:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: zad_InventoryDevice
+      Object: 02B5F0:Devious Devices - Integration.esm
+  - Name: WD_Compatibility
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: config
+      Object: 000800:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: util
+      Object: 000D62:DHLP_Redux.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WD_AssistingCreatures
+      Object: 000828:DHLP_Redux.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000D62:DHLP_Redux.esp
+      Alias: 11
+    Scripts:
+    - Name: WD_EquipMonitor
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: config
+        Object: 000800:DHLP_Redux.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: lvlUpMsg00
+        Object: 000837:DHLP_Redux.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: lvlUpMsg01
+        Object: 000838:DHLP_Redux.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: util
+        Object: 000D62:DHLP_Redux.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: WD_HoursRestrained
+        Object: 000832:DHLP_Redux.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: weightPerk00
+        Object: 000835:DHLP_Redux.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: weightPerk01
+        Object: 000836:DHLP_Redux.esp
+  - Property:
+      Name: ''
+      Object: 000D62:DHLP_Redux.esp
+      Alias: 23
+    Scripts:
+    - Name: WD_EscapeAlias
+      Properties:
+      - MutagenObjectType: ScriptStringProperty
+        Name: listName
+        Data: dhlp-rapists
+      - MutagenObjectType: ScriptObjectProperty
+        Name: util
+        Object: 000D62:DHLP_Redux.esp
+Flags:
+- StartGameEnabled
+- 0x10
+Priority: 60
+NextAliasID: 24
+Aliases:
+- ID: 11
+  Name: PlayerAlias
+  Flags:
+  - AllowReuseInQuest
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 23
+  Name: EscapeAlias
+  Flags:
+  - Optional
+  - AllowReuseInQuest
+  VoiceTypes: Null

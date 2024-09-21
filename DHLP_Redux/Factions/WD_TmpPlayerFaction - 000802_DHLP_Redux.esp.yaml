@@ -1,0 +1,19 @@
+FormKey: 000802:DHLP_Redux.esp
+EditorID: WD_TmpPlayerFaction
+Relations:
+- Target: 01BCC0:Skyrim.esm
+  Reaction: Ally
+- Target: 026724:Skyrim.esm
+  Reaction: Ally
+- Target: 027242:Skyrim.esm
+  Reaction: Ally
+- Target: 034B74:Skyrim.esm
+  Reaction: Ally
+- Target: 043599:Skyrim.esm
+  Reaction: Ally
+- Target: 000802:DHLP_Redux.esp
+  Reaction: Ally
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

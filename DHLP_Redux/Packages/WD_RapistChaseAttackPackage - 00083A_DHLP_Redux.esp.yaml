@@ -1,0 +1,52 @@
+FormKey: 00083A:DHLP_Redux.esp
+EditorID: WD_RapistChaseAttackPackage
+Flags:
+- PreferredSpeed
+- IgnoreCombat
+- WeaponDrawn
+Type: Package
+PreferredSpeed: Run
+Unknown: 48
+ScheduleMonth: -1
+ScheduleDayOfWeek: 255
+ScheduleHour: -1
+ScheduleMinute: -1
+Unknown3: 0x000000
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00083B:DHLP_Redux.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 00083B:DHLP_Redux.esp
+  ComparisonValue: 1
+PackageTemplate: 016FAA:Skyrim.esm
+DataInputVersion: 3
+Data:
+- Key: 0
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Location:
+      Target:
+        MutagenObjectType: LocationTarget
+        Link: 000014:Skyrim.esm
+- Key: 2
+  Value:
+    MutagenObjectType: PackageDataBool
+- Key: 4
+  Value:
+    MutagenObjectType: PackageDataBool
+XnamMarker: 0x05
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

@@ -1,0 +1,12 @@
+FormKey: 000825:DHLP_Redux.esp
+EditorID: WD_EnchPlugWorn
+EnchantType: Enchantment
+Effects:
+- BaseEffect: 01F360:Devious Devices - Integration.esm
+  Data: {}
+- BaseEffect: 01F368:Devious Devices - Integration.esm
+  Data: {}
+- BaseEffect: 0208FD:Devious Devices - Integration.esm
+  Data: {}
+- BaseEffect: 00082E:DHLP_Redux.esp
+  Data: {}
