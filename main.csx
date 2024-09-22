@@ -48,7 +48,7 @@ public bool TryDeleteRecordByEditorId(string editorId, Type recordType) {
 var recordsToDelete = new Dictionary<string, Type>() {
     {"WD_beltRusted_script", typeof(Armor)},
     {"WD_beltRusted_inv", typeof(Armor)},
-    {"WD_beltRusted_AA", typeof(ArmorAddon)},
+    {"WD_beltRustedAA", typeof(ArmorAddon)},
     {"wd_rustedKey", typeof(Key)},
     {"wd_rKeyList", typeof(LeveledItem)},
     {"LootDraugrChestBossBase", typeof(LeveledItem)},
